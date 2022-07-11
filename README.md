@@ -1,5 +1,7 @@
 ## 赞助列表/Sponsor List
 
+[收款码](https://simplepeng.com/merge_pay_code/)
+
 打赏可以备注Github主页
 
 | 赞助商 | 金额  | 时间       | 渠道   |
