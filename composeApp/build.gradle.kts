@@ -45,6 +45,9 @@ kotlin {
             implementation("io.ktor:ktor-client-cio:$ktor_version")
             implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+            //
+            implementation("io.coil-kt.coil3:coil-compose:3.2.0")
+            implementation("io.coil-kt.coil3:coil-network-ktor3:3.2.0")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
