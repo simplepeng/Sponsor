@@ -65,26 +65,18 @@ fun App() {
             if (imageList.isEmpty()) {
                 CircularProgressIndicator()
             } else {
-                AsyncImage(
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(3),
                     modifier = Modifier.fillMaxWidth(),
-                    model = "https://raw.githubusercontent.com/simplepeng/Sponsor/master/pictures/IMG_20250609_173942.jpg",
-                    contentDescription = "image",
-                )
-//                LazyVerticalGrid(
-//                    columns = GridCells.Fixed(3),
-//                    modifier = Modifier.fillMaxWidth(),
-//                ) {
-//                LazyColumn(
-//                    modifier = Modifier.fillMaxWidth(),
-//                ) {
-//                    items(imageList) { url ->
-//                        AsyncImage(
-//                            model = url,
-//                            contentDescription = "image",
-//                            modifier = Modifier.fillMaxWidth()
-//                        )
-//                    }
-//                }
+                ) {
+                    items(imageList) { url ->
+                        AsyncImage(
+                            model = url,
+                            contentDescription = "image",
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                }
             }
         }
     }
