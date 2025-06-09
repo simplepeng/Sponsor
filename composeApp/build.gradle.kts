@@ -28,9 +28,8 @@ kotlin {
         }
         binaries.executable()
     }
-    
+
     sourceSets {
-        
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -40,6 +39,10 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            //
+            val ktor_version = "3.1.3"
+            implementation("io.ktor:ktor-client-core:$ktor_version")
+            implementation("io.ktor:ktor-client-cio:$ktor_version")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
