@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
@@ -6,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    kotlin("plugin.serialization") version "2.1.20"
 }
 
 kotlin {
@@ -43,6 +43,8 @@ kotlin {
             val ktor_version = "3.1.3"
             implementation("io.ktor:ktor-client-core:$ktor_version")
             implementation("io.ktor:ktor-client-cio:$ktor_version")
+            implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
+            implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
