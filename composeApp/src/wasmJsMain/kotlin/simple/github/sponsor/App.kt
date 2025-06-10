@@ -1,6 +1,7 @@
 package simple.github.sponsor
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
@@ -67,7 +68,8 @@ fun App() {
             } else {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(3),
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth(0.5f)
+                        .fillMaxHeight(),
                 ) {
                     items(imageList) { url ->
                         AsyncImage(
