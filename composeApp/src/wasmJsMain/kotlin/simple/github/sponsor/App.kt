@@ -1,6 +1,9 @@
 package simple.github.sponsor
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import io.ktor.client.HttpClient
@@ -54,7 +58,7 @@ fun App() {
                 val response = it.get(url)
                 val result: List<Result> = withContext(Dispatchers.Default) { response.body() }
 //                val result: String = withContext(Dispatchers.Default) { response.body() }
-                println(result)
+//                println(result)
                 imageList = result.map { it.download_url }
             }
         }
@@ -70,6 +74,8 @@ fun App() {
                     columns = GridCells.Fixed(3),
                     modifier = Modifier.fillMaxWidth(0.5f)
                         .fillMaxHeight(),
+                    horizontalArrangement = Arrangement.spacedBy(2.dp),
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
                 ) {
                     items(imageList) { url ->
                         AsyncImage(
@@ -79,6 +85,39 @@ fun App() {
                         )
                     }
                 }
+            }
+            Column(
+                modifier = Modifier.fillMaxWidth(0.2f)
+                    .align(Alignment.TopStart),
+            ) {
+                AsyncImage(
+                    model = "https://raw.githubusercontent.com/simplepeng/merge_pay_code/refs/heads/master/qrcode_alipay.jpg",
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
+                    contentScale = ContentScale.FillBounds
+                )
+                AsyncImage(
+                    model = "https://raw.githubusercontent.com/simplepeng/merge_pay_code/refs/heads/master/qrcode_wxpay.png",
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
+                    contentScale = ContentScale.FillBounds
+                )
+            }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth(0.2f)
+                    .align(Alignment.TopEnd),
+            ) {
+                AsyncImage(
+                    model = "https://raw.githubusercontent.com/simplepeng/merge_pay_code/refs/heads/master/qrcode_qqpay.png",
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxWidth(),
+                    contentScale = ContentScale.FillWidth
+                )
             }
         }
     }
